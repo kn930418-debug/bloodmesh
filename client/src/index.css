@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  @apply bg-ink-950 text-zinc-100 font-sans antialiased;
+  background-image:
+    radial-gradient(1100px 500px at 85% -10%, rgba(225, 29, 72, 0.14), transparent 60%),
+    radial-gradient(900px 480px at -10% 20%, rgba(255, 51, 85, 0.08), transparent 55%);
+  background-attachment: fixed;
+}
+
+h1, h2, h3 {
+  font-family: 'Sora', system-ui, sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0a10;
+}
+::-webkit-scrollbar-thumb {
+  background: #3b2f3a;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #e11d48;
+}
+
+@layer components {
+  .glass {
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.018));
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+  .glass-strong {
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.03));
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(18px);
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blood-600 to-blood-500 px-5 py-2.5 text-sm font-semibold text-white shadow-glow transition hover:brightness-110 active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-semibold text-zinc-200 transition hover:bg-white/10 active:scale-[0.98] disabled:opacity-50;
+  }
+  .input {
+    @apply w-full rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-sm text-zinc-100 placeholder-zinc-500 outline-none transition focus:border-blood-500/70 focus:bg-white/[0.07] focus:ring-2 focus:ring-blood-500/20;
+  }
+  .label {
+    @apply mb-1.5 block text-xs font-semibold uppercase tracking-wider text-zinc-400;
+  }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-semibold;
+  }
+  .section-title {
+    @apply font-display text-2xl font-bold sm:text-3xl;
+  }
+}
+
+.text-gradient {
+  background: linear-gradient(92deg, #ffffff 10%, #ff8ba0 55%, #e11d48 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ---- map ---- */
+.leaflet-container {
+  background: #0b0a10;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+.bm-tiles-dark .leaflet-tile {
+  filter: invert(1) hue-rotate(190deg) brightness(0.92) saturate(0.7) contrast(0.9);
+}
+.leaflet-control-zoom a {
+  background: #121018 !important;
+  color: #e4e4e7 !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+.leaflet-control-attribution {
+  background: rgba(11, 10, 16, 0.75) !important;
+  color: #71717a !important;
+}
+.leaflet-control-attribution a {
+  color: #ff5d73 !important;
+}
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background: #14121c !important;
+  color: #e4e4e7 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55) !important;
+}
+.leaflet-popup-content {
+  margin: 12px 14px !important;
+}
+
+.bm-pin {
+  position: relative;
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+}
+.bm-pin--donor {
+  background: #22c55e;
+  box-shadow: 0 0 12px rgba(34, 197, 94, 0.9);
+}
+.bm-pin--busy {
+  background: #52525b;
+  box-shadow: none;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+.bm-pin--sos {
+  width: 18px;
+  height: 18px;
+  background: #ff3355;
+  box-shadow: 0 0 16px rgba(255, 51, 85, 1);
+}
+.bm-pin--me {
+  width: 18px;
+  height: 18px;
+  background: #38bdf8;
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.9);
+}
+.bm-pin--rare {
+  background: #fbbf24;
+  box-shadow: 0 0 14px rgba(251, 191, 36, 0.95);
+}
+.bm-pulse::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 51, 85, 0.85);
+  animation: bm-ping 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+@keyframes bm-ping {
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.1);
+    opacity: 0;
+  }
+}
+
+.radar-sweep {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: conic-gradient(from 0deg, rgba(255, 51, 85, 0.55), transparent 25%);
+  animation: radar-spin 1.4s linear infinite;
+}
+@keyframes radar-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.grid-fade {
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 40%, transparent 100%);
+}

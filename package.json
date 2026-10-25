@@ -1,0 +1,15 @@
+{
+  "name": "bloodmesh",
+  "private": true,
+  "version": "1.0.0",
+  "description": "BloodMesh — a location-aware, real-time blood donor rescue network (MERN)",
+  "scripts": {
+    "dev": "concurrently -n api,web -c magenta,cyan \"npm --prefix server run dev\" \"npm --prefix client run dev\"",
+    "start": "concurrently -n api,web -c magenta,cyan \"npm --prefix server start\" \"npm --prefix client run dev\"",
+    "seed": "npm --prefix server run seed",
+    "install:all": "npm install && npm --prefix server install && npm --prefix client install"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
